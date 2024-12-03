@@ -1,0 +1,36 @@
+<div class="create-post-container">
+  <h2>Create Post</h2>
+  <form (ngSubmit)="createPost()">
+    <div>
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        [(ngModel)]="description"
+        name="description"
+        required
+        placeholder="Enter the post description"
+      ></textarea>
+    </div>
+
+    <div>
+      <label for="price">Price (optional):</label>
+      <input
+        type="number"
+        id="price"
+        [(ngModel)]="price"
+        name="price"
+        placeholder="Enter a price (if any)"
+      />
+    </div>
+
+    <div>
+      <label for="image">Image (optional):</label>
+      <input type="file" id="image" (change)="onFileChange($event)" />
+    </div>
+
+    <button type="submit">Create Post</button>
+
+    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+</div>
